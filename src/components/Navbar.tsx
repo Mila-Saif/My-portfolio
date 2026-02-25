@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 
 export default function Navbar() {
     const [isEyeOpen, setIsEyeOpen] = useState(false);
-
+    const pathname = usePathname();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -73,17 +74,30 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-8">
-            {navLinks.map((link) => (
-                <Link
+            {navLinks.map((link) => {
+               const isActive = pathname === link.href;
+
+                return (
+                    <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold uppercase tracking-widest text-slate-400 hover:text-cyan-400 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.4)] transition-all duration-300"
+                className={`text-sm font-light uppercase tracking-widest transition-all duration-300 ${isActive
+                    ? " text-cyan-400 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]"
+                    : "text-slate-400 hover:text-cyan-400 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]"
+                }`}
                 >
                     {link.name}
                 </Link>
 
 
-            ))}
+                );
+            
+                
+                
+                
+
+
+})}
 
         </div>
            
