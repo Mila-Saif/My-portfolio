@@ -73,6 +73,7 @@ export default function Navbar() {
                 stroke="white" 
                 strokeWidth="1.5" 
                 strokeLinecap="round" 
+            
                 
             >
                 
