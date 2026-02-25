@@ -35,14 +35,20 @@ export default function Navbar() {
         onMouseLeave={() => setIsEyeOpen(false)}
         >
 
+            {/* the logo */}
+
         <Link href='/' className="flex  items-center justify-center gap-1.5 pt-1">
 
             <div className=" flex flex-col mt-1 mr-2 gap-1">
+
+                {/* right eye */}
 
                 <div className={`w-2 h-2 bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.8)] transition-transform mb-2 duration-200 origin-center ${
                     isEyeOpen ? "scale-y-100" : "scale-y-[0.1]"
                 }`}
                 />
+
+                {/* left eye */}
 
                 <div className={`w-2 h-2 bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.8)] transition-transform duration-200 origin-center ${
                     isEyeOpen ? "scale-x-100" : "scale-x-[0.1]"
@@ -55,6 +61,8 @@ export default function Navbar() {
                
 
             </div>
+            
+            {/* the mouth */}
 
           <div className=" flex items-center">
             <svg 
@@ -72,6 +80,8 @@ export default function Navbar() {
             </svg>
         </div> 
         </Link>
+
+        {/* the links for the pages */}
 
         <div className="flex items-center gap-8">
             {navLinks.map((link) => {
