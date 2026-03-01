@@ -9,6 +9,8 @@ import Image from "next/image";
 
 import Link from "next/link";
 import {motion} from "framer-motion"
+import { Duru_Sans } from "next/font/google";
+import { span } from "framer-motion/client";
 
 
 
@@ -110,7 +112,7 @@ export default function Home() {
         
 
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-white mb-3 tracking-tight"> Selected Projects
+          <h3 className=" text-lg md:text-3xl font-bold text-white mb-3 tracking-tight"> Selected Projects
 
           </h3>
           <div className="w-16 h-1 bg-cyan-400 rounded-full drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]"></div>
@@ -185,7 +187,104 @@ export default function Home() {
 
       
        </motion.section>
+
+
+       {/* the about  section */}
+
+
+       <motion.section 
+       id="about"
+       initial={{opacity:0, y:50}}
+       whileInView={{opacity: 1, y:0}}
+       transition={{duration:0.8, ease:'easeOut'}}
+       viewport={{once: true, amount:0.2}}
+       className="px-4 pb-20 pt-4"
+       >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+
+          <div className="md:col-span-4 flex mb-16 flex-col justify-start">
+            <h3 className="text-lg md:text-3xl font-bold text-white mb-6 tracking-tight leading-tight">
+
+             Know More <br className="hidden md:block"/>About <br className="hidden md:block"/>Me
+
+
+            </h3>
+            <div className=" w-16 h-1 bg-cyan-400 rounded-full drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+
+            </div>
+
+          </div>
+
+          <div className="md:col-span-8 grid grid-cols-1  sm:grid-cols-2 gap-6 ">
+
+            <div className="sm:col-span-2 p-8 rounded-2xl border border-white/10  backdrop-blur-sm hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)]">
+              <h4 className="text-cyan-400 text-sm font-semibold upperace tracking-widest mb-4">
+                Me
+              </h4>
+              <p className="text-slate-300 leading-relaxed font-light text-lg ">
+                I craft pixel-perfect UIs and I'm actively on a mission to make things move on screen
+
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl border border-white/10 backdrop-blur-sm  hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)]">
+              <h4 className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4 ">
+                Based In
+
+              </h4>
+
+              <p className="text-white font-medium text-lg">
+                
+                Sana'a, Yemen
+              </p>
+              <p className="text-slate-400 text-sm mt-1 font-light">
+                Available for remote work
+              </p>
+              
+            </div>
+
+            <div className="p-8 rounded-2xl border border-white/10  backdrop-blur-sm hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)]">
+              <h4 className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">Languages</h4>
+              <div className="flex flex-col gap-2">
+                <p className="text-white font-medium text-lg">Arabic <span className="text-slate-500 font-light text-sm ml-2">Native</span></p>
+                <p className="text-white font-medium text-lg">English <span className="text-slate-500 font-light text-sm ml-2">Fluent</span></p>
+              </div>
+            </div>
+
+            <div className="sm:col-span-2 p-8 rounded-2xl border border-white/10 backdrop-blur-sm hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] ">
+            <h4 className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">Core Skills</h4>
+            <div className="flex flex-wrap gap-3">
+              {["React", "Next.js", "Tailwind CSS", "UI UX", "JavaScript", "TypeScript", "Framer Motion", "API Integration", "Git", "Prompt Engineering "].map((skills, i) => (
+                <span key={i} className="px-4 py-2 text-sm font-medium text-slate-300 bg-white/5 rounded-full border border-white/10 hover:border-cyan-400/50 hover:text-cyan-300 transition-colors duration-300 cursor-default">
+                  {skills}
+
+                </span>
+
+              ))}
+
+            </div>
+
+
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+       </motion.section>
+
+
+
+       
     </div >
+
+
+    
 
       
 
