@@ -85,9 +85,14 @@ export default function Home() {
           </p>
 
           <div className="flex items-center - gap-6">
-            <Button className="h-auto px-8 py-3 rounded-full border  border-cyan-400 bg-transparent hover:text-slate-950 font-semibold hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6) transition-all duration-300">
+            <a href="#projects">
+              <Button className="h-auto px-8 py-3 rounded-full border  border-cyan-400 bg-transparent hover:text-slate-950 font-semibold hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6) transition-all duration-300">
               View Projects
             </Button>
+
+
+            </a>
+          
 
           </div>
 

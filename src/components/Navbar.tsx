@@ -82,7 +82,7 @@ export default function Navbar() {
 
     return ( 
         <nav
-        className={`fixed top-0 left-0 z-50 right-0 pt-10 px-8 backdrop-blur-md flex items-center justify-between p-4 border-b border-b-white/10 ${
+        className={`fixed top-0 left-0 z-50 right-0 pt-10 px-16 backdrop-blur-md flex items-center justify-between p-4 border-b border-b-white/10 ${
          isNavVisible ? "translate-y-0"  : "-translate-y-full" 
          
         }`}
