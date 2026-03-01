@@ -1,13 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { section } from "framer-motion/client";
+
 
 
 export default function Navbar() {
     const [isEyeOpen, setIsEyeOpen] = useState(false);
-    const pathname = usePathname();
+    const [activeSection, setActiveSection] = useState('home')
+
+    const [isNavVisible, setIsNavVisible] = useState(true);
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -20,20 +24,73 @@ export default function Navbar() {
         return () => clearTimeout(timer)
     }, []);
 
+
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+
+                    const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+            setIsNavVisible(false);
+        } else {
+            setIsNavVisible(true);
+        }
+
+        lastScrollY.current = currentScrollY;
+
+        if (currentScrollY < 100 ) {
+            setActiveSection("home")
+            return;
+        }
+
+        const sections = document.querySelectorAll<HTMLElement>("section[id]");
+        let currentSection = "home";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (currentScrollY >= sectionTop - 300) {
+                currentSection = section.getAttribute('id') || "home";
+            }
+        });
+        setActiveSection(currentSection);
+
+
+        };
+
+            
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+
+
+
+}, []);
+
+
+
+
+
     const navLinks = [
-        {name: "Home", href: "/"},
-        {name: "Projects", href: "projects"},
-        {name: "About", href: "about"},
-        {name: "Contact", href: "contact"},
+        {name: "Home", href: "#home", id: "home"},
+        {name: "Projects", href: "#projects", id: "projects"},
+        {name: "About", href: "#about", id: "about" },
+        {name: "Contact", href: "#contact", id: "contact"},
     ]
 
 
     return ( 
         <nav
-        className="flex items-center justify-between p-4 border-b border-b-white/10"
+        className={`fixed top-0 left-0 z-50 right-0 pt-10 px-8 backdrop-blur-md flex items-center justify-between p-4 border-b border-b-white/10 ${
+         isNavVisible ? "translate-y-0"  : "-translate-y-full" 
+         
+        }`}
+        
         onMouseEnter={() => setIsEyeOpen(true)}
         onMouseLeave={() => setIsEyeOpen(false)}
         >
+
 
             {/* the logo */}
 
@@ -86,10 +143,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-8">
             {navLinks.map((link) => {
-               const isActive = pathname === link.href;
+               const isActive = activeSection === link.id;
 
                 return (
-                    <Link
+                    <a
                 key={link.name}
                 href={link.href}
                 className={`text-sm font-light uppercase tracking-widest transition-all duration-300 ${isActive
@@ -98,7 +155,7 @@ export default function Navbar() {
                 }`}
                 >
                     {link.name}
-                </Link>
+                </a>
 
 
                 );

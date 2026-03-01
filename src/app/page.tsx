@@ -25,7 +25,7 @@ export default function Home() {
     },
 
     {
-      title: "To-Do Lisst",
+      title: "To-Do List",
       description: "A simple task manager to keep your day organized ",
       image: "/todo.png",
       tech: ["React", "Tailwind", "State management"],
@@ -56,11 +56,11 @@ export default function Home() {
         </div>
 
 {/* the hero section */}
-        <section className="flex flex-col justify-center min-h-[85vh] mt-10 px-4">
+        <section id="home" className="flex flex-col justify-center min-h-[85vh] mt-10 px-4">
           
           
-          <p className=" mb-8 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-white drop-shadow-[0_0_15px_rgba(255,2555,255,0.3)]
-            I build modern web designs. uppercase tracking-[0.3em] text-sm font-semibold mb-4 animate-pulse">
+          <p className=" mb-8 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-white uppercase tracking-[0.3em] text-sm font-semibold animate-pulse drop-shadow-[0_0_15px_rgba(255,2555,255,0.3)]">
+             
             Hi, this is Mila
           </p>
           
@@ -77,7 +77,7 @@ export default function Home() {
             Turning ideas into digital realities using Next.js and React.
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center - gap-6">
             <Button className="h-auto px-8 py-3 rounded-full border  border-cyan-400 bg-transparent hover:text-slate-950 font-semibold hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6) transition-all duration-300">
               View Projects
             </Button>
@@ -99,6 +99,7 @@ export default function Home() {
       {/* the projects section */}
 
       <motion.section
+        id="projects"
         initial={{opacity: 0, y:50}}
         whileInView={{opacity: 1, y: 0}}
         transition={{duration: 0.8, ease:"easeOut"}}
