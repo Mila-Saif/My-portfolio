@@ -2,16 +2,54 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { section } from "framer-motion/client";
+import {FiMenu, FiX} from "react-icons/fi";
 
 
 
 export default function Navbar() {
     const [isEyeOpen, setIsEyeOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home')
+    const [isMobileMenu, setIsMobileMenu] = useState(false);
 
     const [isNavVisible, setIsNavVisible] = useState(true);
+
     const lastScrollY = useRef(0);
+
+    const navRef = useRef(null);
+    useEffect (() => {
+        const handleClickOutside = (event) => {
+            if (navRef.current && !navRef.current.contains(event.target)) {
+                setIsMobileMenu(false)
+            }
+
+        };
+
+        if (isMobileMenu) {
+            document.addEventListener("mousedown", handleClickOutside)
+
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+
+        };
+
+    }, [isMobileMenu]);
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) setIsMobileMenu(false);
+
+
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+        }, []);
+    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -82,6 +120,7 @@ export default function Navbar() {
 
     return ( 
         <nav
+        ref={navRef}
         className={`fixed top-0 left-0 z-50 right-0 pt-10 px-16 backdrop-blur-md flex items-center justify-between p-4 border-b border-b-white/10 ${
          isNavVisible ? "translate-y-0"  : "-translate-y-full" 
          
@@ -141,7 +180,7 @@ export default function Navbar() {
 
         {/* the links for the pages */}
 
-        <div className="flex items-center gap-8">
+        <div className=" hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
                const isActive = activeSection === link.id;
 
@@ -158,6 +197,9 @@ export default function Navbar() {
                 </a>
 
 
+
+
+
                 );
             
                 
@@ -168,8 +210,46 @@ export default function Navbar() {
 })}
 
         </div>
-           
-        </nav>
+
+        {/* mobile toggle */}
+
+        <button 
+        className="md:hidden text-white hover:text-cyan-400 transition-colors z-50"
+        onClick={() => setIsMobileMenu(!isMobileMenu)}
+        aria-label="Toggle mobile menu"
+        >
+
+            {isMobileMenu ? <FiX size={28}/> : <FiMenu size={28} /> }
+
+        </button>
+
+        
+       <div
+        className={`absolute top-full left-0 right-0 bg-indigo-950 backdrop-blur-xl border-b border-white/10 flex flex-col items-center py-10 gap-8 transition-all duration-300 md:hidden origin-top ${
+          isMobileMenu
+            ? "opacity-100 scale-y-100 visible"
+            : "opacity-0 scale-y-95 invisible"
+        }`}
+      >
+        {navLinks.map((link) => {
+          const isActive = activeSection === link.id;
+          return (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsMobileMenu(false)}
+              className={`text-lg font-light uppercase tracking-widest transition-all duration-300 ${
+                isActive
+                  ? "text-cyan-400 [text-shadow:0_0_8px_rgba(255,255,255,0.4)]"
+                  : "text-slate-400 hover:text-cyan-400 hover:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]"
+              }`}
+            >
+              {link.name}
+            </a>
+          );
+        })}
+      </div>
+    </nav>
 
 
     );
