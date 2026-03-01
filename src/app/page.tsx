@@ -9,12 +9,17 @@ import Image from "next/image";
 
 import Link from "next/link";
 import {motion} from "framer-motion"
-import { Duru_Sans } from "next/font/google";
-import { span } from "framer-motion/client";
+
+import {useState} from "react";
+
+
 
 
 
 export default function Home() {
+
+  const [isContactViewd, setIsContactViewd] = useState(false);
+
 
 
   const projects = [
@@ -278,6 +283,64 @@ export default function Home() {
 
        </motion.section>
 
+       {/* the contact section  */}
+
+       <motion.section
+       id="contact"
+       initial={{opacity:0, y:50}}
+       whileInView={{opacity:1, y:0}}
+       transition={{duration:0.8, ease:'easeOut'}}
+       viewport={{once: false, amount:0.2}} 
+          
+          onViewportEnter={() => setIsContactViewd(true)}
+          onViewportLeave={() => setIsContactViewd(false)}
+          className="px-4 pb-20 pt-20"
+        >
+
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 p-10 md:p-16 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)]">
+            
+            <div className="flex flex-col">
+              <h3 className="text-lg md:text-3xl font-bold text-white mb-6 tracking-tight">Let's build <br/> something <span className="text-cyan-400">together.</span></h3>
+              <div className="w-16 h-1 bg-cyan-400 rounded-full drop-shadow-[0_0_15px_rgba(34,211,238,0.3)]"></div>
+            </div>
+
+            
+
+            <div className="flex flex-col items-start md:items-end gap-8">
+
+              <div className="flex gap-6 mt-4">
+                <a href='https://github.com/Mila-Saif' target="_blank" className="p-4 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                  <FiGithub className="w-6 h-6 group-hover:scale-110 transition-transform"/>
+                </a>
+                
+                <a href='https://www.instagram.com/mila_fawzi/' target="_blank" className="p-4 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                  <FiInstagram className="w-6 h-6 group-hover:scale-110 transition-transform"/>
+                </a>
+
+                <a href='https://www.linkedin.com/in/mila-fawzi-306655251' target="_blank" className="p-4 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:-translate-y-1 transition-all duration-300 group">
+                  <RiLinkedinLine className="w-6 h-6 group-hover:scale-110 transition-transform"/>
+                </a>
+              </div>
+
+              
+         
+              <a href="mailto:your.Milaafawzi@gmail.com" className="group/btn inline-flex items-center gap-4 text-lg gmd:text-2xl font-bold text-slate-300 hover:text-white transition-colors duration-300">
+                Contact Me
+                <FiArrowRight className="w-4 h-4 md:w-6 md:h-6 text-cyan-400 transition-transform duration-300 group-hover/btn:translate-x-3"/>
+              </a>
+
+              
+
+
+      </div>
+
+      </div>
+       
+       
+
+
+       </motion.section>
+
 
 
        
@@ -293,27 +356,18 @@ export default function Home() {
 
        {/* social links  */}
 
-      <div className="fixed right-12 top-[90%] -translate-y-1/2 flex flex-col gap-4 z-50 hidden md:flex ">
+<div className={`fixed right-12 top-[80%] -translate-y-1/2 flex-col gap-5 z-50 hidden lg:flex transition-opacity duration-500 ${isContactViewd ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+        <a href='https://github.com/Mila-Saif' target="_blank" className="group">
+          <FiGithub className="w-5 h-5 text-slate-400 group-hover:text-cyan-400 group-hover:scale-125 duration-300 transition-all"/>
+        </a>
+        
+        <a href='https://www.instagram.com/mila_fawzi/' target="_blank" className="group">
+          <FiInstagram className="w-5 h-5 text-slate-400 group-hover:text-cyan-400 group-hover:scale-125 duration-300 transition-all"/>
+        </a>
 
-         <a href= 'https://github.com/Mila-Saif' target="_blank" className=" group-hover:scale-120 group"  >
-          
-          < FiGithub className="w-5 h-5  hover:text-gray-400 duration-200 transition-transform "/>
-
-            </a>
-
-          
-          <a href= 'https://www.instagram.com/mila_fawzi/ ' target="_blank" className=" group-hover:scale-120 group"  >
-          < FiInstagram className="w-5 h-5  hover:text-gray-400 duration-200 transition-transform "/>
-
-            </a>
-
-         <a href= 'https://www.linkedin.com/in/mila-fawzi-306655251' target="_blank" className=" group-hover:scale-120 group"  >
-          
-           <RiLinkedinLine 
-              className="w-5 h-5  hover:text-gray-400 duration-200 transition-transform "/>
-
-            </a>
-
+        <a href='https://www.linkedin.com/in/mila-fawzi-306655251' target="_blank" className="group">
+          <RiLinkedinLine className="w-6 h-6 text-slate-400 group-hover:text-cyan-400 group-hover:scale-125 duration-300 transition-all"/>
+        </a>
       </div>
 
     
