@@ -26,7 +26,7 @@ export default function Home() {
     {
       title: "Recipe Finder",
       description: "Discover and save delicious recipes. Build with API integration",
-      image: "/recipe.png",
+      image: "/Recipe.png",
       tech: ["Next.js", "Tailwind", "API"],
       link: "https://recipe-app-smoky-pi.vercel.app/",
     },
