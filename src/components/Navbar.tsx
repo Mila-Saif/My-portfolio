@@ -15,10 +15,10 @@ export default function Navbar() {
 
     const lastScrollY = useRef(0);
 
-    const navRef = useRef(null);
+    const navRef = useRef<HTMLElement>(null);
     useEffect (() => {
-        const handleClickOutside = (event) => {
-            if (navRef.current && !navRef.current.contains(event.target)) {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
                 setIsMobileMenu(false)
             }
 
