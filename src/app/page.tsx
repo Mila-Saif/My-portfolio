@@ -32,7 +32,7 @@ export default function Home() {
     {
       title: "Recipe Finder",
       description: "Discover and save delicious recipes. Build with API integration",
-      image: "/recipe.png",
+      image: "/Recipe.png",
       tech: ["Next.js", "Tailwind", "API"],
       link: "https://recipe-app-smoky-pi.vercel.app/",
     },
@@ -76,7 +76,7 @@ export default function Home() {
 
           <p className=" mb-8 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-white uppercase tracking-[0.3em] text-sm font-semibold animate-pulse drop-shadow-[0_0_15px_rgba(255,2555,255,0.3)]">
 
-            Hi, this is Mila
+            Hi, this is M
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
