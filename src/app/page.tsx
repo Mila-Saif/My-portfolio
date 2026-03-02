@@ -76,7 +76,7 @@ export default function Home() {
 
           <p className=" mb-8 text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-white uppercase tracking-[0.3em] text-sm font-semibold animate-pulse drop-shadow-[0_0_15px_rgba(255,2555,255,0.3)]">
 
-            Hi, this is M
+            Hi, this is Mila
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
