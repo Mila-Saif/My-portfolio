@@ -32,7 +32,7 @@ export default function Home() {
     {
       title: "Recipe Finder",
       description: "Discover and save delicious recipes. Build with API integration",
-      image: "/recipe.png",
+      image: "/Recipe.png",
       tech: ["Next.js", "Tailwind", "API"],
       link: "https://recipe-app-smoky-pi.vercel.app/",
     },
@@ -129,7 +129,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
-          className="px-4 pt-10 pb-32"
+          className="px-4 pt-10 pb-13"
         >
 
 
@@ -221,11 +221,11 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.2 }}
-          className="px-4 pb-20 pt-4"
+          className="px-4 pb-10 pt-4"
         >
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
 
-            <div className="md:col-span-4 flex mb-16 flex-col justify-start">
+            <div className="md:col-span-4 flex mb-6 flex-col justify-start">
               <h3 className="text-3xl md:text-3xl font-bold text-white mb-6 tracking-tight leading-tight">
 
                 More <br className="hidden md:block" />About  Me
@@ -312,7 +312,7 @@ export default function Home() {
 
           onViewportEnter={() => setIsContactViewd(true)}
           onViewportLeave={() => setIsContactViewd(false)}
-          className="px-4 pb-20 pt-20"
+          className="px-4 pb-20 pt-10"
         >
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 p-10 md:p-16 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-white/20 transition-all duration-500 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)]">
